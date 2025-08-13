@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import EmailGenerator from "@/components/EmailGenerator";
 import ExpirationTimer from "@/components/ExpirationTimer";
 import EmailInbox from "@/components/EmailInbox";
+import BlogSection from "@/components/BlogSection";
+import FAQSection from "@/components/FAQSection";
 
 const Index = () => {
   const [generatedEmail, setGeneratedEmail] = useState<string | null>(null);
@@ -53,6 +55,9 @@ const Index = () => {
           isExpired={isExpired}
         />
       </main>
+      
+      <BlogSection />
+      <FAQSection />
       
       <footer className="text-center py-6 text-sm text-muted-foreground border-t">
         <p>Privacy-focused temporary email service • No data stored • Automatically expires</p>

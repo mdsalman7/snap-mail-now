@@ -144,9 +144,9 @@ const EmailInbox = ({ generatedEmail, isExpired }: EmailInboxProps) => {
           </div>
 
           {/* Email Content */}
-          <div className="hidden lg:block">
+          <div className="lg:block">
             {selectedEmail ? (
-              <div className="p-4 border rounded-lg bg-background">
+              <div className="p-4 border rounded-lg bg-background mt-4 lg:mt-0">
                 <div className="border-b pb-4 mb-4">
                   <h3 className="font-semibold text-lg mb-2">{selectedEmail.subject}</h3>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -159,11 +159,19 @@ const EmailInbox = ({ generatedEmail, isExpired }: EmailInboxProps) => {
                   </div>
                 </div>
                 <div className="prose prose-sm max-w-none">
-                  <p className="text-foreground leading-relaxed">{selectedEmail.content}</p>
+                  <p className="text-foreground leading-relaxed whitespace-pre-wrap">{selectedEmail.content}</p>
+                  <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+                    <h4 className="font-medium mb-2">Email Details</h4>
+                    <div className="text-sm space-y-1">
+                      <p><span className="font-medium">Message ID:</span> {selectedEmail.id}</p>
+                      <p><span className="font-medium">Received:</span> {selectedEmail.receivedAt.toLocaleString()}</p>
+                      <p><span className="font-medium">Status:</span> {selectedEmail.isRead ? 'Read' : 'Unread'}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : (
-              <div className="p-8 border rounded-lg bg-muted/20 text-center">
+              <div className="hidden lg:block p-8 border rounded-lg bg-muted/20 text-center">
                 <Mail className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
                 <p className="text-muted-foreground">Select an email to read</p>
               </div>
