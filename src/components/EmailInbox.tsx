@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Inbox, Mail, User, Calendar } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Email {
   id: string;
@@ -20,6 +21,7 @@ interface EmailInboxProps {
 const EmailInbox = ({ generatedEmail, isExpired }: EmailInboxProps) => {
   const [emails, setEmails] = useState<Email[]>([]);
   const [selectedEmail, setSelectedEmail] = useState<Email | null>(null);
+  const { t } = useLanguage();
 
   // Mock email data for demonstration
   useEffect(() => {
@@ -94,7 +96,7 @@ const EmailInbox = ({ generatedEmail, isExpired }: EmailInboxProps) => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Inbox className="h-5 w-5" />
-          Inbox
+          {t('inbox.title')}
           {emails.length > 0 && (
             <Badge variant="secondary">{emails.filter(e => !e.isRead).length} new</Badge>
           )}
@@ -107,8 +109,8 @@ const EmailInbox = ({ generatedEmail, isExpired }: EmailInboxProps) => {
             {emails.length === 0 ? (
               <div className="text-center py-8">
                 <Mail className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                <p className="text-muted-foreground">No emails yet</p>
-                <p className="text-sm text-muted-foreground">New messages will appear here automatically</p>
+                <p className="text-muted-foreground">{t('inbox.waiting')}</p>
+                <p className="text-sm text-muted-foreground">{t('inbox.noEmails')}</p>
               </div>
             ) : (
               emails.map((email) => (
@@ -151,14 +153,15 @@ const EmailInbox = ({ generatedEmail, isExpired }: EmailInboxProps) => {
                   <h3 className="font-semibold text-lg mb-2">{selectedEmail.subject}</h3>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <User className="h-4 w-4" />
-                    <span>From: {selectedEmail.from}</span>
+                    <span>{t('inbox.from')}: {selectedEmail.from}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                     <Calendar className="h-4 w-4" />
-                    <span>{selectedEmail.receivedAt.toLocaleString()}</span>
+                    <span>{t('inbox.time')}: {selectedEmail.receivedAt.toLocaleString()}</span>
                   </div>
                 </div>
                 <div className="prose prose-sm max-w-none">
+                  <h4 className="font-medium mb-2">{t('inbox.fullMessage')}</h4>
                   <p className="text-foreground leading-relaxed whitespace-pre-wrap">{selectedEmail.content}</p>
                   <div className="mt-6 p-4 bg-muted/30 rounded-lg">
                     <h4 className="font-medium mb-2">Email Details</h4>
@@ -173,7 +176,7 @@ const EmailInbox = ({ generatedEmail, isExpired }: EmailInboxProps) => {
             ) : (
               <div className="hidden lg:block p-8 border rounded-lg bg-muted/20 text-center">
                 <Mail className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                <p className="text-muted-foreground">Select an email to read</p>
+                <p className="text-muted-foreground">{t('inbox.viewFull')}</p>
               </div>
             )}
           </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, AlertTriangle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ExpirationTimerProps {
   expirationTime: Date | null;
@@ -10,6 +11,7 @@ interface ExpirationTimerProps {
 const ExpirationTimer = ({ expirationTime, onExpired }: ExpirationTimerProps) => {
   const [timeLeft, setTimeLeft] = useState<string>("");
   const [isExpired, setIsExpired] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!expirationTime) return;
@@ -47,7 +49,7 @@ const ExpirationTimer = ({ expirationTime, onExpired }: ExpirationTimerProps) =>
             <Clock className="h-5 w-5 text-warning" />
           )}
           <span className="text-sm font-medium">
-            {isExpired ? "Email Expired" : "Time Remaining"}
+            {isExpired ? "Email Expired" : t('timer.expires')}
           </span>
           <span className={`text-lg font-mono font-bold ${isExpired ? 'text-destructive' : 'text-warning'}`}>
             {timeLeft}

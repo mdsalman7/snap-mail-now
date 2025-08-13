@@ -1,13 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BlogSection = () => {
+  const { t } = useLanguage();
+  
   const blogPosts = [
     {
       id: 1,
-      title: "Why Temporary Email Addresses Are Essential for Privacy",
-      excerpt: "Learn how disposable emails protect your personal information and reduce spam in your primary inbox.",
+      title: t('blog.post1.title'),
+      excerpt: t('blog.post1.excerpt'),
       author: "Privacy Expert",
       date: "2024-01-15",
       category: "Privacy",
@@ -15,8 +18,8 @@ const BlogSection = () => {
     },
     {
       id: 2,
-      title: "The Complete Guide to Email Testing for Developers",
-      excerpt: "Best practices for testing email functionality without cluttering your real email accounts.",
+      title: t('blog.post2.title'),
+      excerpt: t('blog.post2.excerpt'),
       author: "Tech Team",
       date: "2024-01-10",
       category: "Development",
@@ -24,8 +27,8 @@ const BlogSection = () => {
     },
     {
       id: 3,
-      title: "Understanding Email Security: Encryption vs Privacy",
-      excerpt: "Explore the difference between email encryption and privacy protection in modern digital communication.",
+      title: t('blog.post3.title'),
+      excerpt: t('blog.post3.excerpt'),
       author: "Security Team",
       date: "2024-01-05",
       category: "Security",
@@ -36,9 +39,9 @@ const BlogSection = () => {
   return (
     <section className="w-full max-w-6xl mx-auto px-4 py-12">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-4">Latest from Our Blog</h2>
+        <h2 className="text-3xl font-bold mb-4">{t('blog.title')}</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Stay informed about email privacy, security best practices, and the latest updates to our temporary email service.
+          {t('blog.subtitle')}
         </p>
       </div>
 
@@ -69,7 +72,7 @@ const BlogSection = () => {
                 </div>
               </div>
               <div className="flex items-center gap-2 mt-4 text-primary font-medium group-hover:gap-3 transition-all">
-                <span>Read more</span>
+                <span>{t('blog.readMore')}</span>
                 <ArrowRight className="h-4 w-4" />
               </div>
             </CardContent>

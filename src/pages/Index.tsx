@@ -5,8 +5,11 @@ import ExpirationTimer from "@/components/ExpirationTimer";
 import EmailInbox from "@/components/EmailInbox";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
+import LanguageSelector from "@/components/LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
+  const { t } = useLanguage();
   const [generatedEmail, setGeneratedEmail] = useState<string | null>(null);
   const [expirationTime, setExpirationTime] = useState<Date | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -60,7 +63,10 @@ const Index = () => {
       <FAQSection />
       
       <footer className="text-center py-6 text-sm text-muted-foreground border-t">
-        <p>Privacy-focused temporary email service • No data stored • Automatically expires</p>
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p>{t('footer.privacy')}</p>
+          <LanguageSelector />
+        </div>
       </footer>
     </div>
   );

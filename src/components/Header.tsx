@@ -1,6 +1,8 @@
 import { Shield, Zap, Clock } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
+  const { t } = useLanguage();
   return (
     <header className="text-center py-8 px-4">
       <div className="max-w-4xl mx-auto">
@@ -9,11 +11,11 @@ const Header = () => {
             <Zap className="h-6 w-6 text-primary-foreground" />
           </div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            TempMail Pro
+            {t('header.title')}
           </h1>
         </div>
         <p className="text-lg text-muted-foreground mb-6">
-          Instant disposable email addresses for privacy and security
+          {t('header.subtitle')}
         </p>
         <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">

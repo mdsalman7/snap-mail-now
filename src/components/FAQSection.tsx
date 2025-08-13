@@ -6,48 +6,31 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HelpCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const FAQSection = () => {
+  const { t } = useLanguage();
+  
   const faqs = [
     {
       id: "item-1",
-      question: "How long do temporary email addresses last?",
-      answer: "You can set the duration anywhere from 10 minutes to 1 hour. Once the time expires, the email address and all received messages are permanently deleted for your privacy."
+      question: t('faq.q1'),
+      answer: t('faq.a1')
     },
     {
       id: "item-2",
-      question: "Is it safe to use temporary emails for account verification?",
-      answer: "Yes, our temporary emails are perfect for account verification. They receive emails in real-time and are automatically deleted after expiration, protecting your privacy."
+      question: t('faq.q2'),
+      answer: t('faq.a2')
     },
     {
       id: "item-3",
-      question: "Can I extend the duration of my temporary email?",
-      answer: "Currently, you need to generate a new email address if you need more time. We're working on an extension feature for future updates."
+      question: t('faq.q3'),
+      answer: t('faq.a3')
     },
     {
       id: "item-4",
-      question: "Do you store any personal information?",
-      answer: "No, we don't require any sign-up or personal information. All emails are stored temporarily in memory and automatically deleted after expiration."
-    },
-    {
-      id: "item-5",
-      question: "What types of emails can I receive?",
-      answer: "You can receive any type of email including verification emails, newsletters, and notifications. However, we recommend using temporary emails only for non-sensitive communications."
-    },
-    {
-      id: "item-6",
-      question: "Can I reply to emails received in my temporary inbox?",
-      answer: "Currently, our service is receive-only. You cannot send replies from temporary email addresses. This is by design to maintain privacy and prevent spam."
-    },
-    {
-      id: "item-7",
-      question: "How many emails can I receive?",
-      answer: "There's no limit to the number of emails you can receive during the active period of your temporary email address."
-    },
-    {
-      id: "item-8",
-      question: "Is the service free to use?",
-      answer: "Yes, our temporary email service is completely free to use. There are no hidden charges or premium features."
+      question: t('faq.q4'),
+      answer: t('faq.a4')
     }
   ];
 
@@ -57,7 +40,7 @@ const FAQSection = () => {
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
             <HelpCircle className="h-6 w-6 text-primary" />
-            <CardTitle className="text-3xl font-bold">Frequently Asked Questions</CardTitle>
+            <CardTitle className="text-3xl font-bold">{t('faq.title')}</CardTitle>
           </div>
           <p className="text-muted-foreground">
             Everything you need to know about our temporary email service
