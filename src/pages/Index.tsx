@@ -1,12 +1,62 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import Header from "@/components/Header";
+import EmailGenerator from "@/components/EmailGenerator";
+import ExpirationTimer from "@/components/ExpirationTimer";
+import EmailInbox from "@/components/EmailInbox";
 
 const Index = () => {
+  const [generatedEmail, setGeneratedEmail] = useState<string | null>(null);
+  const [expirationTime, setExpirationTime] = useState<Date | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [isExpired, setIsExpired] = useState(false);
+
+  const handleEmailGenerated = (email: string, duration: number) => {
+    setIsGenerating(true);
+    
+    // Simulate generation delay
+    setTimeout(() => {
+      setGeneratedEmail(email);
+      setExpirationTime(new Date(Date.now() + duration * 60 * 1000));
+      setIsExpired(false);
+      setIsGenerating(false);
+    }, 1000);
+  };
+
+  const handleExpired = () => {
+    setIsExpired(true);
+    setTimeout(() => {
+      setGeneratedEmail(null);
+      setExpirationTime(null);
+    }, 3000);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
+      <Header />
+      
+      <main className="container mx-auto px-4 pb-8 space-y-6">
+        <EmailGenerator 
+          onEmailGenerated={handleEmailGenerated}
+          generatedEmail={generatedEmail}
+          isGenerating={isGenerating}
+        />
+        
+        {expirationTime && (
+          <ExpirationTimer 
+            expirationTime={expirationTime}
+            onExpired={handleExpired}
+          />
+        )}
+        
+        <EmailInbox 
+          generatedEmail={generatedEmail}
+          isExpired={isExpired}
+        />
+      </main>
+      
+      <footer className="text-center py-6 text-sm text-muted-foreground border-t">
+        <p>Privacy-focused temporary email service • No data stored • Automatically expires</p>
+      </footer>
     </div>
   );
 };
