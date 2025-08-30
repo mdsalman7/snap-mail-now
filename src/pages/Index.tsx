@@ -6,7 +6,6 @@ import EmailInbox from "@/components/EmailInbox";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
 import SEOContent from "@/components/SEOContent";
-import Navigation from "@/components/Navigation";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -40,7 +39,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
       <Header />
-      <Navigation />
       
       <main className="container mx-auto px-4 pb-8 space-y-6" id="email-generator">
         <EmailGenerator 
@@ -72,10 +70,71 @@ const Index = () => {
         <FAQSection />
       </section>
       
-      <footer className="text-center py-6 text-sm text-muted-foreground border-t">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p>{t('footer.privacy')}</p>
-          <LanguageSelector />
+      <footer className="border-t mt-12">
+        <div className="container mx-auto px-4 py-8">
+          {/* Footer Resources */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="font-semibold mb-4 text-primary">{t('nav.resources')}</h3>
+              <div className="space-y-2">
+                <a href="/privacy-policy" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.external.privacy')}
+                </a>
+                <a href="/terms-of-service" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.external.terms')}
+                </a>
+                <a href="/about" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.external.about')}
+                </a>
+                <a href="/contact" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.external.contact')}
+                </a>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4 text-primary">Features</h3>
+              <div className="space-y-2">
+                <a href="#email-generator" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Email Generator
+                </a>
+                <a href="#privacy" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Privacy Protection
+                </a>
+                <a href="#faq" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Help & Support
+                </a>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4 text-primary">Learn More</h3>
+              <div className="space-y-2">
+                <a href="#blog" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Blog & Updates
+                </a>
+                <a href="#privacy" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  How It Works
+                </a>
+                <a href="#faq" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                  FAQ
+                </a>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4 text-primary">SnapMailNow</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Free temporary email service for privacy protection and secure communications.
+              </p>
+              <LanguageSelector />
+            </div>
+          </div>
+          
+          {/* Copyright */}
+          <div className="pt-6 border-t text-center">
+            <p className="text-sm text-muted-foreground">{t('footer.privacy')}</p>
+          </div>
         </div>
       </footer>
     </div>
