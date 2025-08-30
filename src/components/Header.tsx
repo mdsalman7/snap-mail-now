@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const Header = () => {
   const { t } = useLanguage();
   return (
-    <header className="text-center py-8 px-4">
+    <header className="text-center py-8 px-4" role="banner">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-center gap-2 mb-4">
           <div className="p-2 bg-gradient-to-r from-primary to-primary-glow rounded-lg">

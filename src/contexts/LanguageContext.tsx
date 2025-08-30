@@ -42,6 +42,21 @@ const translations = {
     'header.title': 'TempMail',
     'header.subtitle': 'Secure Temporary Email Service',
     
+    // Navigation
+    'nav.title': 'Site Navigation',
+    'nav.home': 'Home',
+    'nav.generator': 'Email Generator',
+    'nav.privacy': 'Privacy Features',
+    'nav.faq': 'FAQ',
+    'nav.blog': 'Blog',
+    'nav.quickLinks': 'Quick Links',
+    'nav.resources': 'Resources',
+    'nav.startNow': 'Start Generating Emails',
+    'nav.external.privacy': 'Privacy Policy',
+    'nav.external.terms': 'Terms of Service',
+    'nav.external.about': 'About Us',
+    'nav.external.contact': 'Contact',
+
     // Email Generator
     'generator.title': 'Generate Temporary Email',
     'generator.description': 'Get a disposable email address instantly. No registration required.',

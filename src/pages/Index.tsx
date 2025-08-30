@@ -6,6 +6,7 @@ import EmailInbox from "@/components/EmailInbox";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
 import SEOContent from "@/components/SEOContent";
+import Navigation from "@/components/Navigation";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -39,8 +40,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
       <Header />
+      <Navigation />
       
-      <main className="container mx-auto px-4 pb-8 space-y-6">
+      <main className="container mx-auto px-4 pb-8 space-y-6" id="email-generator">
         <EmailGenerator 
           onEmailGenerated={handleEmailGenerated}
           generatedEmail={generatedEmail}
@@ -60,9 +62,15 @@ const Index = () => {
         />
       </main>
       
-      <SEOContent />
-      <BlogSection />
-      <FAQSection />
+      <section id="privacy">
+        <SEOContent />
+      </section>
+      <section id="blog">
+        <BlogSection />
+      </section>
+      <section id="faq">
+        <FAQSection />
+      </section>
       
       <footer className="text-center py-6 text-sm text-muted-foreground border-t">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
