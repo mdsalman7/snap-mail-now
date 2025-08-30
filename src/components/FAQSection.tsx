@@ -40,7 +40,7 @@ const FAQSection = () => {
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
             <HelpCircle className="h-6 w-6 text-primary" />
-            <CardTitle className="text-3xl font-bold">{t('faq.title')}</CardTitle>
+            <h2 className="text-3xl font-bold">{t('faq.title')}</h2>
           </div>
           <p className="text-muted-foreground">
             Everything you need to know about our temporary email service

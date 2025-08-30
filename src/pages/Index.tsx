@@ -5,6 +5,7 @@ import ExpirationTimer from "@/components/ExpirationTimer";
 import EmailInbox from "@/components/EmailInbox";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
+import SEOContent from "@/components/SEOContent";
 import LanguageSelector from "@/components/LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -59,6 +60,7 @@ const Index = () => {
         />
       </main>
       
+      <SEOContent />
       <BlogSection />
       <FAQSection />
       
